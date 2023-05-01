@@ -23,7 +23,7 @@ export function NoteForm({
 }: NoteFromProps) {
   const titleRef = useRef<HTMLInputElement>(null);
   const [selectedTags, setSelectedTags] = useState<Tag[]>(tags);
-  const [markdownValue, setMarkdownValue] = useState(markdown);
+  const [markdownValue, setMarkdownValue] = useState<string>(markdown);
   const navigate = useNavigate();
 
   function handleSubmit(e: FormEvent) {
@@ -101,7 +101,7 @@ export function NoteForm({
               <MDEditor
                 height={400}
                 value={markdownValue}
-                onChange={setMarkdownValue}
+                onChange={(value) => setMarkdownValue(value || "")}
               />
             </div>
           </div>
